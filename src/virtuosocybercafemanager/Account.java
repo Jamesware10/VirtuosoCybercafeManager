@@ -8,6 +8,7 @@ package virtuosocybercafemanager;
 /**
  *
  * @author Curtney James
+ * @deprecated 
  */
 public class Account {
 
