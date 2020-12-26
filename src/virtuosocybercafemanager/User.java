@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Curtney James
  */
-public class User extends Account {
+public class User{
 
     //Field variables
 
@@ -38,11 +38,12 @@ public class User extends Account {
     /**
      *
      */
-    public Account account;
+    public double balance;;
 
     //DATABASE CONNECTION
     //Query results variables
     String usernameResults, emailResults, passwordResults;
+    double balanceResults;
 
     //Connects to database
     Connection connection = null;    //creates a connection
@@ -66,7 +67,7 @@ public class User extends Account {
             username = "";
             password = "";
             email = "";
-            account = new Account();
+            balance = 0;
             
             connection = DriverManager.getConnection(jdbcUrl, mySQL_User, mySQL_Password);
             
@@ -108,8 +109,8 @@ public class User extends Account {
      *
      * @return
      */
-    public Account getAccount() {
-        return account;
+    public double getBalance() {
+        return balance;
     }
 
     /**
@@ -132,8 +133,8 @@ public class User extends Account {
      *
      * @param account
      */
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     /**
@@ -142,6 +143,37 @@ public class User extends Account {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+     public void setDateCreated(Date dateCreated) {
+
+        //this.dateCreated = dateCreated;
+
+    }
+
+    /**
+     *
+     * @param amount
+     */
+    public void withdraw(double amount) {
+
+        balance = balance - amount;
+
+        System.out.println("Your withdrawl amount is: " + amount
+                + "\nYour new balance is: " + balance);
+
+    }
+
+    /**
+     *
+     * @param amount
+     */
+    public void deposit(double amount) {
+
+        balance = balance + amount;
+
+        System.out.println("Your deposit amount is: " + amount
+                + "\nYour new balance is: " + balance);
     }
     
     

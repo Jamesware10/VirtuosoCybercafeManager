@@ -23,82 +23,15 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
  *
  * @author Curtney James
  */
-public class Overview{
+public class Overview {
 
-    /**
-     *
-     */
     public JScrollPane scroll;
 
-    /**
-     *
-     */
-    public JPanel myAccountPanel,
+    public JPanel myAccountPanel, innerPanel, panel;
 
-    /**
-     *
-     */
-    innerPanel,
+    public JLabel lblMyAccount, lblDisplayPicture, lblUsername, lblUsernameDisplayed, lblEmail, lblPassword, lblPasswordDisplayed, lblAccount, lblDatecreated;
 
-    /**
-     *
-     */
-    panel;
-
-    /**
-     *
-     */
-    public JLabel lblMyAccount,
-
-    /**
-     *
-     */
-    lblDisplayPicture,
-
-    /**
-     *
-     */
-    lblUsername,
-
-    /**
-     *
-     */
-    lblUsernameDisplayed,
-
-    /**
-     *
-     */
-    lblEmail,
-
-    /**
-     *
-     */
-    lblPassword,
-
-    /**
-     *
-     */
-    lblPasswordDisplayed,
-
-    /**
-     *
-     */
-    lblAccount,
-
-    /**
-     *
-     */
-    lblDatecreated;
-
-    /**
-     *
-     */
-    public static JLabel lblAccountDisplayed,
-
-    /**
-     *
-     */
-    lblEmailDisplayed;
+    public static JLabel lblAccountDisplayed, lblEmailDisplayed;
 
     /**
      *
@@ -125,15 +58,12 @@ public class Overview{
         //Icon basic = new ImageIcon("C:\\Users\\Curtney James\\Documents\\NetBeansProjects\\CybercafeManagerGUI\\src\\img/esports2.jpg");
         //Icon work = new ImageIcon("C:\\Users\\Curtney James\\Documents\\NetBeansProjects\\CybercafeManagerGUI\\src\\img/gaming.png");
         //new ImageIcon(new ImageIcon("C:\\Users\\Curtney James\\Documents\\NetBeansProjects\\CybercafeManagerGUI\\src\\img/esports2.jpg").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        
-        
 //GridBagLayout
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
 
-        //
-        scroll.setPreferredSize(new Dimension(1000, 620));
         
+        scroll.setPreferredSize(new Dimension(1000, 620));
 
         //Panel Settings
         //panel.setPreferredSize(new Dimension(1000, 620));
@@ -192,7 +122,7 @@ public class Overview{
         constraints.insets = new Insets(20, 50, 20, 10);
         constraints.fill = GridBagConstraints.BOTH;
         //lblDisplayPicture.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("C:\\Users\\Curtney James\\Documents\\NetBeansProjects\\CybercafeManagerGUI\\src\\img/login_icon.png")).getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH)));
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\\\Users\\\\Curtney James\\\\Documents\\\\NetBeansProjects\\\\CybercafeManagerGUI\\\\src\\\\img/login_icon.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("img/login_icon.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
         lblDisplayPicture.setIcon(imageIcon);
 //lblDisplayPicture.setIcon(userAccountIcon);
         //lblDisplayPicture.setPreferredSize(new Dimension(100,100));
@@ -260,6 +190,7 @@ public class Overview{
         constraints.fill = GridBagConstraints.HORIZONTAL;
         lblEmailDisplayed.setForeground(Color.CYAN);
         lblEmailDisplayed.setFont(new Font("Nothing", 1, 20));
+        lblEmailDisplayed.setText(UserLogin.user.email);
         innerPanel.add(lblEmailDisplayed, constraints);
 
         constraints.gridx = 0;
@@ -308,7 +239,7 @@ public class Overview{
         constraints.fill = GridBagConstraints.HORIZONTAL;
         lblAccountDisplayed.setForeground(Color.CYAN);
         lblAccountDisplayed.setFont(new Font("Nothing", 1, 20));
-        lblAccountDisplayed.setText(String.valueOf(UserLogin.user.getBalance()));
+        lblAccountDisplayed.setText("$"+String.valueOf(UserLogin.user.balance));
         innerPanel.add(lblAccountDisplayed, constraints);
 
         //
@@ -324,14 +255,14 @@ public class Overview{
         constraints.fill = GridBagConstraints.HORIZONTAL;
         innerPanel.setBackground(Color.DARK_GRAY);
         myAccountPanel.add(innerPanel, constraints);
-        
+
         scroll.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-    @Override
-    protected void configureScrollBarColors() {
-        scroll.getVerticalScrollBar().setBackground(navPanelBlack);
-        this.thumbColor = Color.DARK_GRAY;
-    }
-});
+            @Override
+            protected void configureScrollBarColors() {
+                scroll.getVerticalScrollBar().setBackground(navPanelBlack);
+                this.thumbColor = Color.DARK_GRAY;
+            }
+        });
 
     }
 

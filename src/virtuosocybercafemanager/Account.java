@@ -24,8 +24,8 @@ public class Account {
     /**
      *
      */
-    public Account() {
-        balance = 5000;
+    public Account(double balance) {
+         this.balance = balance;
         //dateCreated = new Date();
     }
 
@@ -48,13 +48,8 @@ public class Account {
      *
      * @param dateCreated
      */
-    public void setDateCreated(Date dateCreated) {
+    
 
-        //this.dateCreated = dateCreated;
-
-    }
-
-    //getter method for balance
 
     /**
      *
@@ -70,33 +65,6 @@ public class Account {
 //        return dateCreated;
 //    }
 
-    //method for withdrawl
-
-    /**
-     *
-     * @param amount
-     */
-    public void withdraw(double amount) {
-
-        balance = balance - amount;
-
-        System.out.println("Your withdrawl amount is: " + amount
-                + "\nYour new balance is: " + balance);
-
-    }
-
-    //method for deposit 
-
-    /**
-     *
-     * @param amount
-     */
-    public void deposit(double amount) {
-
-        balance = balance + amount;
-
-        System.out.println("Your deposit amount is: " + amount
-                + "\nYour new balance is: " + balance);
-    }
+   
 
 }

@@ -147,15 +147,19 @@ public class UserLogin extends User {
                 if (loginPanel.isVisible()) {
                     user.setUsername(LoginPanel.txtUsername.getText());
                     user.setPassword(String.valueOf(LoginPanel.txtPassword.getPassword()));
-                    user.setEmail(emailResults);
+                    
                     validateLogin();
+                    
+                    user.setEmail(emailResults);
+                    user.setBalance(balanceResults);
+                    
 
                     if (validateLogin() == true) {
                         //builds a Cybercafe Manager Frame
                         try {
                             
-                            CybercafeManagerFrame c = new CybercafeManagerFrame();
-                            c.setVisible(true);
+                            new CybercafeManagerFrame();
+                            
                             
                         } catch (IOException ex) {
                             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -215,7 +219,7 @@ public class UserLogin extends User {
 
             //Query statement - gets information from database
             Statement statement = connection.createStatement();
-            String select = "SELECT `id`, `username`, `email`, `password` FROM `virtuoso_cybercafe_users` "
+            String select = "SELECT `id`, `username`, `email`, `password`,`account` FROM `virtuoso_cybercafe_users` "
                     + "WHERE USERNAME = " + "'" + user.getUsername() + "'"
                     + " 'PASSWORD' = " + "'" + user.getPassword() + "'";
             //+ "SELECT `email` FROM `virtuoso_cybercafe_users` WHERE 'username'= 'q' 'email' = 'q'";
@@ -223,6 +227,7 @@ public class UserLogin extends User {
             // String selectEmail = "SELECT `email` FROM `virtuoso_cybercafe_users` WHERE 'username'= 'q' 'email' = 'q'";
             results = statement.executeQuery(select);
             System.out.println(select+" was selected");
+            
             //results2 = statement.executeQuery(selectEmail);
 
             while (results.next()) {
@@ -232,11 +237,12 @@ public class UserLogin extends User {
                 usernameResults = results.getString("username");
                 emailResults = results.getString("email");
                 passwordResults = results.getString("password");
+                balanceResults = results.getDouble("account");
 
                 rowCount++;
             }
             //lblEmailDisplayed.setText(emailResults);
-            System.out.println("Selected is: "+select);
+            System.out.println("balance is " + balanceResults);
             System.out.println("email results are: " + emailResults);
 
             //Overview.lblEmailDisplayed.setText(emailResults);
