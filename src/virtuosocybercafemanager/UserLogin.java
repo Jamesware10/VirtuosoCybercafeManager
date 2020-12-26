@@ -186,6 +186,7 @@ public class UserLogin extends User {
                     user.setUsername(RegisterPanel.txtUsername.getText());
                     user.setEmail(RegisterPanel.txtEmail.getText());
                     user.setPassword(String.valueOf(RegisterPanel.txtPassword.getPassword()));
+                    user.setBalance(5000);
                     register();
                 }
             }
